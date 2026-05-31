@@ -1,0 +1,806 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --primary-color: #5FA8D3;
+    --text-color: #1F2937;
+    --p-text-color: #494E56;
+    --bg-color: #F8FAFC;
+    --btn-hover: #4F8CC9;
+}
+
+/* Reset Universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden; /* Evita que a barra de rolagem horizontal apareça quando o menu mobile estiver aberto */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* vh = viewport height (altura da tela) */
+    margin: 0;
+}
+/* header */
+
+header {
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 4rem;
+}
+
+header nav ul {
+    display: flex;
+    gap: 24px;
+}
+
+header nav ul li {
+    list-style: none;
+}
+
+header nav ul li a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease ;
+}
+
+header nav ul li a:hover{
+    color: var(--primary-color);
+}
+
+header div{
+    display: flex;
+    gap: 16px;
+}
+
+
+header div a img {
+    width: 1.5rem;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+header div a img:hover {
+    transform: scale(1.1);
+}
+/* main */
+main {
+    flex: 1;
+    max-width: 1920px;
+    margin: 32px auto;
+    margin-bottom: 80px;
+    padding: 0 80px;
+    text-align: center;
+}
+
+main section h1 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 2.5rem;
+    color: var(--text-color)
+}
+
+main section p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    color: var(--p-text-color)
+}
+
+main section a{
+    display: inline-block; /* Ocupa só o tamanho do texto + padding */
+    padding: 12px 32px;
+    margin: 0 auto 32px auto; /* Centraliza horizontalmente e adiciona margem inferior */
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+main section a:hover{
+    background-color: var(--btn-hover);
+}
+
+main section img{
+    display: block;
+    margin: 0 auto; 
+    max-width: 500px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+footer {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 60px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.footer-column{
+    display: flex;
+    gap: 100px;
+}
+
+footer h4 {
+    margin-bottom: 16px;
+    font-family: var(--bg-color);
+    font-size: 1.2rem;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li a {
+    color: var(--bg-color);
+    text-decoration: none;
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Uma linha discreta para separar */
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Catalogo */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    text-align: left; /* ISSO AQUI MATA O TEXTO CENTRALIZADO DA HOME! */
+}
+
+.produtos-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    gap: 16px;
+    padding: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    min-height: 400px;
+    cursor: default;
+}
+
+.produtos-card img {
+    /* Faz a imagem crescer para ignorar o padding de 16px do card pai */
+    width: calc(100% + 32px); 
+    
+    /* Puxa a imagem para as extremidades, anulando o recuo do padding */
+    margin-left: -16px;
+    margin-top: -16px;
+    
+    /* Arredonda apenas os cantos superiores (Top-L, Top-R, Bot-R, Bot-L) */
+    border-radius: 12px 12px 0px 0px;
+    
+    /* Define uma altura fixa para manter todos os cards alinhados */
+    height: 240px;
+    
+    /* Faz a imagem preencher o espaço sem distorcer (mantém a proporção) */
+    object-fit: cover;
+    object-position: top; /* Força o topo da foto a aparecer sempre */
+}
+
+.produtos-card h3 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.produtos-card .descricao{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: var(--p-text-color);
+    font-size: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Número de linhas que quero mostrar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona os "..." automaticamente */
+    height: 3rem; /* Garante que todos ocupem o espaço de 2 linhas, mesmo os curtos */
+}
+
+.produtos-card .preco{
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.produtos-card button{
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    color: var(--bg-color);
+    cursor: pointer;
+    margin-top: auto;
+    transition: 0.3s ease;
+}
+
+.produtos-card button:hover{
+    background-color: var(--btn-hover);
+}
+
+/* Estilo do Menu Mobile (Gaveta) */
+/* Tirando a visibilidade do menu hamburguer */
+.menu-hamburguer {
+    display: none;
+}
+
+.btn-mobile {
+    background: none;
+    border: none;
+}
+
+/* contato */
+
+.contato{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.contato li{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+}
+
+.icone-contato {
+    
+    margin: 0;
+    width: 96px;
+    background-color: var(--bg-color);
+}
+
+.contato li a {
+    padding: 12px 32px;  /* Remove o padding */
+    margin: 0;  /* Remove a margem */
+    background-color: var(--primary-color);  /* Deixa o texto na cor azul */
+    font-size: 1rem;  /* Reduz o tamanho de fonte */
+}
+
+/* sobre */
+
+.sobre{
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;           /* Limite a largura máxima */
+    margin: 0 auto;             /* Centraliza a div */
+    padding: 0 20px;            /* Padding lateral */
+    text-align: justify;        /* Texto justificado */
+}
+
+.sobre p{
+    margin-bottom: 24px;        /* Espaço entre parágrafos */
+    line-height: 1.8;           /* Altura de linha para melhor legibilidade */
+    font-size: 1.5rem;         /* Tamanho de fonte um pouco maior */
+    color: var(--p-text-color); /* Cor padrão do texto */
+}
+
+.sobre p:last-child {
+    margin-bottom: 0;           /* Remove margem do último parágrafo */
+}
+
+/* Formulários (Login e Cadastro) */
+.formulario-secao {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.formulario-container {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+}
+
+.formulario-container h1 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.formulario-descricao {
+    text-align: center;
+    color: var(--p-text-color);
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    padding: 12px 16px;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(95, 168, 211, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9CA3AF;
+}
+
+.btn-formulario {
+    padding: 12px 32px;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+.btn-formulario:hover {
+    background-color: var(--btn-hover);
+}
+
+.btn-formulario:active {
+    transform: scale(0.98);
+}
+
+.formulario-link {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.formulario-link p {
+    color: var(--p-text-color);
+    font-size: 0.95rem;
+}
+
+.formulario-link a {
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-link a:hover {
+    background-color: var(--btn-hover);
+    text-decoration: underline;
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE (MEDIA QUERIES)            */
+/* ========================================= */
+
+/* Degrau 1: Notebooks e Telas Médias (Até 1440px) */
+@media (max-width: 1440px) {
+    .produtos-grid {
+        grid-template-columns: repeat(4, 1fr); /* Cai para 4 colunas */
+    }
+}
+
+/* Degrau 2: Tablets e Notebooks Pequenos (Até 1024px) */
+@media (max-width: 1024px) {
+    main {
+        padding: 0 40px; /* Diminui a borda branca lateral para dar espaço aos cards */
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(3, 1fr); /* Cai para 3 colunas */
+    }
+}
+
+/* Degrau 3: Celulares e Tablets em pé (Até 768px) */
+@media (max-width: 768px) {
+    /* 1. O SALVADOR DO HEADER: Esconde os links para não estourar a tela */
+    header nav {
+        display: none; 
+    }
+
+    /* 2. Ajuste do Container Principal */
+    main {
+        padding: 0 16px; /* Reduz aquela borda gigante de 80px para apenas 16px */
+    }
+
+    /* 3. O Grid do Catálogo (2 Colunas) */
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px; /* Corredor mais fino entre os produtos */
+    }
+
+    /* 4. Emagrecendo o Card para a tela pequena */
+    .produtos-card {
+        padding: 12px; /* Diminuímos o padding interno de 16px para 12px */
+        gap: 8px;
+        min-height: 320px;
+    }
+
+    /* 5. Reajustando a Mágica da Imagem (Acompanhando o novo padding) */
+    .produtos-card img {
+        width: calc(100% + 24px); /* 100% + 12px de cada lado = 24px */
+        margin-left: -12px;
+        margin-top: -12px;
+        height: 150px; /* Imagem mais baixa para não ocupar a tela toda */
+    }
+
+    /* 6. Salvando o Botão */
+    .produtos-card button {
+        font-size: 0.8rem; /* Diminui a letra para caber "Adicionar ao Carrinho" */
+        padding: 8px 4px;
+    }
+    
+    .produtos-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .menu-hamburguer {
+        display: block; /* Exibe o menu hamburguer */
+        width: 1.5rem;
+    }
+
+    .formulario-container {
+        padding: 32px 20px;
+        max-width: 100%;
+    }
+
+    .formulario-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-group input {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .btn-formulario {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+
+    .menu-mobile {
+    position: fixed; /* Fica fixo na tela, mesmo se rolar a página */
+    top: 0;
+    right: 0;
+    width: 70%; /* Ocupa 70% da tela (estilo gaveta) ou 100% (tela cheia) */
+    height: 100vh; /* Altura total da tela */
+    background-color: #FFFFFF;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1); /* Sombra legal na lateral */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px; /* Espaço entre os links */
+    z-index: 999; /* Garante que fique por cima de tudo no site */
+    
+    /* A Mágica da Animação: Joga o menu para fora da tela */
+    right: -100%; /* Fica ancorado totalmente fora da tela */
+    transition: right 0.3s ease-in-out; /* Suaviza a entrada */ 
+}
+/* Isso vai empilhar os links verticalmente e centralizá-los. */
+.menu-mobile ul {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Os links dentro do menu mobile */
+.menu-mobile a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* A classe que o JavaScript vai adicionar para abrir o menu! */
+.menu-mobile.ativo {
+    right: 0; /* Cola o menu na borda direita da tela, deixando visível */
+}
+}
+
+/* ========================================= */
+/* CARRINHO LATERAL (SIDE DRAWER)             */
+/* ========================================= */
+
+/* Overlay Semi-transparente (Fundo escuro atrás do carrinho) */
+.overlay-carrinho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de transparência */
+    z-index: 998; /* Fica atrás do carrinho, mas na frente de tudo mais */
+    opacity: 0; /* Invisível por padrão */
+    visibility: hidden; /* Não pode ser clicado */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Suave */
+}
+
+/* Quando o overlay está ativo */
+.overlay-carrinho.ativo {
+    opacity: 1; /* Fica visível */
+    visibility: visible; /* Pode ser clicado */
+}
+
+/* Carrinho Lateral */
+.carrinho-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%; /* 100% em mobile, 400px em desktop */
+    max-width: 400px;
+    height: 100vh; /* Altura total da tela */
+    background-color: #FFFFFF;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Sombra na lateral esquerda */
+    display: flex;
+    flex-direction: column;
+    z-index: 999; /* Fica na frente de tudo */
+    right: -100%; /* Começa totalmente fora da tela */
+    transition: right 0.3s ease-in-out; /* Animação suave ao deslizar */
+}
+
+/* Quando o carrinho está ativo (visível) */
+.carrinho-lateral.ativo {
+    right: 0; /* Cola na borda direita da tela */
+}
+
+/* Cabeçalho do Carrinho */
+.carrinho-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #E5E7EB;
+    background-color: #FFFFFF;
+}
+
+.carrinho-header h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Botão de Fechar (X) */
+.btn-fechar {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.btn-fechar:hover {
+    color: var(--primary-color);
+}
+
+/* Área com os itens do carrinho (rola se necessário) */
+.carrinho-itens {
+    flex: 1;
+    overflow-y: auto; /* Permite scroll se houver muitos itens */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Mensagem quando o carrinho está vazio */
+.carrinho-vazio {
+    text-align: center;
+    color: var(--p-text-color);
+    font-size: 1rem;
+    padding: 40px 20px;
+}
+
+/* ========================================= */
+/* ITENS DENTRO DO CARRINHO                  */
+/* ========================================= */
+
+/* Container de cada item no carrinho */
+.carrinho-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background-color: #F8FAFC;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.carrinho-item:hover {
+    background-color: #EFF6FF;
+    border-color: var(--primary-color);
+}
+
+/* Imagem do produto no carrinho */
+.carrinho-item-imagem {
+    flex-shrink: 0; /* Não deixa a imagem encolher */
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    overflow: hidden; /* Garante que a imagem não ultrapasse o border-radius */
+    background-color: #E5E7EB;
+}
+
+.carrinho-item-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche o espaço mantendo a proporção */
+}
+
+/* Informações do produto (nome e preço) */
+.carrinho-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.carrinho-item-info h4 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.carrinho-item-preco {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* Botão para remover item */
+.carrinho-item-remover {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.carrinho-item-remover:hover {
+    background-color: #FEE2E2;
+    border-color: #EF4444;
+    color: #EF4444;
+}
+
+/* Rodapé do Carrinho */
+.carrinho-footer {
+    padding: 20px;
+    border-top: 1px solid #E5E7EB;
+    background-color: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Total de preço */
+.carrinho-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.carrinho-total span {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.carrinho-total strong {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+/* Botão Finalizar Compra */
+.btn-finalizar {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-finalizar:hover {
+    background-color: var(--btn-hover);
+}
+
+.btn-finalizar:active {
+    transform: scale(0.98);
+}
+
+/* Responsividade do Carrinho */
+@media (max-width: 768px) {
+    .carrinho-lateral {
+        max-width: 85%; /* Em telas pequenas, deixa um pouco de espaço */
+    }
+}
