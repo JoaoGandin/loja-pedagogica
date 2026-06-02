@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* ========================================= */
+/* PAINEL ADMINISTRATIVO - ESTILOS          */
+/* ========================================= */
+
+:root {
+    --primary-color: #5FA8D3;
+    --secondary-color: #e74c3c;
+    --text-color: #1F2937;
+    --p-text-color: #494E56;
+    --bg-color: #F8FAFC;
+    --border-color: #ddd;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ========================================= */
+/* HEADER ADMIN                              */
+/* ========================================= */
+
+header {
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: var(--shadow);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+header .logo {
+    width: 4rem;
+}
+
+header #btn-sair-admin {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header #btn-sair-admin:hover {
+    background-color: #4F8CC9;
+}
+
+/* ========================================= */
+/* MAIN - LAYOUT DOIS PAINÉIS                */
+/* ========================================= */
+
+main {
+    display: flex;
+    gap: 32px;
+    padding: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========================================= */
+/* SEÇÃO FORMULÁRIO                         */
+/* ========================================= */
+
+#secao-form-produto {
+    flex: 1;
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+#secao-form-produto h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--text-color);
+}
+
+/* ========================================= */
+/* FORMULÁRIO                                */
+/* ========================================= */
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(95, 168, 211, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ========================================= */
+/* BOTÕES DO FORMULÁRIO                      */
+/* ========================================= */
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+#btn-salvar-produto {
+    flex: 1;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-salvar-produto:hover:not(:disabled) {
+    background-color: #4F8CC9;
+}
+
+#btn-salvar-produto:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#btn-cancelar-edicao {
+    flex: 1;
+    background-color: #999;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-cancelar-edicao:hover {
+    background-color: #777;
+}
+
+/* ========================================= */
+/* SEÇÃO LISTA PRODUTOS                      */
+/* ========================================= */
+
+#secao-lista-produtos {
+    flex: 1;
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+#secao-lista-produtos h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--text-color);
+}
+
+/* ========================================= */
+/* CARDS DE PRODUTOS                         */
+/* ========================================= */
+
+#lista-produtos {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-produto-card {
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.admin-produto-card:last-child {
+    border-bottom: none;
+}
+
+.admin-produto-info {
+    flex: 1;
+}
+
+.admin-produto-info h3 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.admin-produto-info .descricao {
+    font-family: "Nunito", sans-serif;
+    font-size: 13px;
+    color: var(--p-text-color);
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.admin-produto-info .preco {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.admin-produto-info .estoque {
+    font-family: "Nunito", sans-serif;
+    font-size: 13px;
+    color: var(--p-text-color);
+}
+
+/* ========================================= */
+/* BOTÕES DE AÇÃO (EDITAR/EXCLUIR)          */
+/* ========================================= */
+
+.admin-produto-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-editar,
+.btn-excluir {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-editar {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #4F8CC9;
+}
+
+.btn-excluir {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-excluir:hover {
+    background-color: #c0392b;
+}
+
+/* ========================================= */
+/* FOOTER                                    */
+/* ========================================= */
+
+footer {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer .footer-column {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 20px;
+}
+
+footer h4 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 8px;
+}
+
+footer ul li a {
+    color: var(--bg-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE                            */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    #secao-form-produto,
+    #secao-lista-produtos {
+        flex: auto;
+    }
+
+    #secao-lista-produtos {
+        max-height: none;
+    }
+
+    footer .footer-column {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 16px;
+    }
+
+    header .logo {
+        width: 3rem;
+    }
+
+    header #btn-sair-admin {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    main {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    #secao-form-produto,
+    #secao-lista-produtos {
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    #secao-form-produto h2,
+    #secao-lista-produtos h2 {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+    }
+
+    .admin-produto-card {
+        flex-direction: column;
+    }
+
+    .admin-produto-acoes {
+        width: 100%;
+    }
+
+    .btn-editar,
+    .btn-excluir {
+        flex: 1;
+    }
+
+    footer {
+        padding: 24px 16px;
+    }
+
+    .copyright {
+        font-size: 0.85rem;
+    }
+}
