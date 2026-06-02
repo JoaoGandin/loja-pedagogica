@@ -429,3 +429,64 @@ if (produtosGrid) {
     // CHAMAR A FUNÇÃO PARA CARREGAR OS PRODUTOS AO INICIAR A PÁGINA
     carregarProdutos();
 }
+
+/* ========================================= */
+/* FORMULÁRIO DE LOGIN ADMIN                 */
+/* ========================================= */
+
+// CAPTURAR O FORMULÁRIO E O BOTÃO SUBMIT
+const formularioLoginAdmin = document.querySelector('form[aria-label="Formulário de login admin"]');
+
+// Verificar se o formulário existe (pode não estar em todas as páginas)
+if (formularioLoginAdmin) {
+    // Capturar o botão submit dentro do formulário
+    const btnSubmitLoginAdmin = formularioLoginAdmin.querySelector('button[type="submit"]');
+    const textoBotaoAdminOriginal = btnSubmitLoginAdmin.textContent;
+
+    // ESCUTAR O EVENTO SUBMIT DO FORMULÁRIO
+    formularioLoginAdmin.addEventListener('submit', async (e) => {
+        // Prevenir o comportamento padrão de envio do formulário
+        e.preventDefault();
+
+        // COLETAR OS VALORES DOS CAMPOS
+        const email = document.getElementById('email-admin').value.trim();
+        const senha = document.getElementById('senha-admin').value;
+
+        // DESABILITAR O BOTÃO E MUDAR O TEXTO
+        btnSubmitLoginAdmin.disabled = true;
+        btnSubmitLoginAdmin.textContent = 'Entrando...';
+
+        try {
+            // CRIAR FORMDATA E ADICIONAR OS CAMPOS
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('senha', senha);
+
+            // ENVIAR REQUISIÇÃO FETCH
+            const resposta = await fetch('../backend/api/usuarios/login-admin.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            // CONVERTER A RESPOSTA PARA JSON
+            const dados = await resposta.json();
+
+            // VERIFICAR SE FOI SUCESSO OU ERRO
+            if (dados.sucesso === true) {
+                // SUCESSO: Redirecionar para a página de admin (sem alert)
+                window.location.href = 'admin.html';
+            } else {
+                // ERRO: Exibir mensagem de erro
+                alert(dados.mensagem);
+            }
+        } catch (erro) {
+            // ERRO DE CONEXÃO OU OUTRO PROBLEMA
+            console.error('Erro ao fazer login admin:', erro);
+            alert('Erro ao conectar ao servidor. Tente novamente mais tarde.');
+        } finally {
+            // REABILITAR O BOTÃO E RESTAURAR O TEXTO (SEMPRE)
+            btnSubmitLoginAdmin.disabled = false;
+            btnSubmitLoginAdmin.textContent = textoBotaoAdminOriginal;
+        }
+    });
+}
