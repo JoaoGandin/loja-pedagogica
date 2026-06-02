@@ -25,8 +25,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // Obter o método HTTP
 $metodo = $_SERVER['REQUEST_METHOD'];
 
-// === GET: Listar todos os produtos ===
+// === GET: Listar todos os produtos ou buscar um específico ===
 if ($metodo === 'GET') {
+    // Verificar se um ID específico foi passado
+    if (isset($_GET['id'])) {
+        $id = intval($_GET['id']);
+
+        // Preparar statement para buscar um produto específico
+        $sql_buscar = 'SELECT id, nome, descricao, preco, estoque, imagem FROM produtos WHERE id = ?';
+        $stmt_buscar = $conn->prepare($sql_buscar);
+
+        if ($stmt_buscar === false) {
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Erro ao buscar produto.'
+            ]);
+            exit();
+        }
+
+        // Vincular parâmetro e executar
+        $stmt_buscar->bind_param('i', $id);
+        $stmt_buscar->execute();
+        $resultado_buscar = $stmt_buscar->get_result();
+
+        // Verificar se o produto foi encontrado
+        if ($resultado_buscar->num_rows === 0) {
+            $stmt_buscar->close();
+            $conn->close();
+
+            http_response_code(404);
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Produto não encontrado.'
+            ]);
+            exit();
+        }
+
+        // Obter o produto
+        $produto = $resultado_buscar->fetch_assoc();
+        $stmt_buscar->close();
+        $conn->close();
+
+        http_response_code(200);
+        echo json_encode([
+            'sucesso' => true,
+            'produto' => $produto
+        ]);
+        exit();
+    }
+
+    // Se não foi passado ID, listar todos os produtos
     $sql = 'SELECT id, nome, descricao, preco, estoque, imagem FROM produtos ORDER BY id DESC';
     $resultado = $conn->query($sql);
 

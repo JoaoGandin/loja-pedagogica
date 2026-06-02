@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="shortcut icon" href="../assets/icon/logoIcon.ico" type="image/x-icon">
+        <title>Painel Admin | Materiais Pedagógicos</title>
+    </head>
+    <body>
+        <header>
+            <a href="../index.html"><img src="../assets/images/logo.png" alt="Logo" class="logo"></a>
+            <div>
+                <button id="btn-sair-admin" aria-label="Sair da conta de administrador">Sair</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- SEÇÃO 1: FORMULÁRIO DE CADASTRO/EDIÇÃO DE PRODUTO -->
+            <section id="secao-form-produto" class="admin-secao">
+                <h2>Adicionar Produto</h2>
+                
+                <form id="form-produto" class="admin-form">
+                    <!-- Campo Hidden para ID do Produto (para edição) -->
+                    <input type="hidden" id="produto-id" value="">
+
+                    <!-- Campo Nome do Produto -->
+                    <div class="form-group">
+                        <label for="produto-nome">Nome do Produto</label>
+                        <input 
+                            type="text" 
+                            id="produto-nome" 
+                            placeholder="Nome do produto"
+                            required
+                            aria-required="true"
+                            aria-label="Nome do produto"
+                        >
+                    </div>
+
+                    <!-- Campo Descrição do Produto -->
+                    <div class="form-group">
+                        <label for="produto-descricao">Descrição</label>
+                        <textarea 
+                            id="produto-descricao" 
+                            placeholder="Descrição do produto"
+                            aria-label="Descrição do produto"
+                        ></textarea>
+                    </div>
+
+                    <!-- Campo Preço do Produto -->
+                    <div class="form-group">
+                        <label for="produto-preco">Preço (R$)</label>
+                        <input 
+                            type="number" 
+                            id="produto-preco" 
+                            placeholder="0.00"
+                            step="0.01"
+                            required
+                            aria-required="true"
+                            aria-label="Preço do produto"
+                        >
+                    </div>
+
+                    <!-- Campo Estoque do Produto -->
+                    <div class="form-group">
+                        <label for="produto-estoque">Estoque</label>
+                        <input 
+                            type="number" 
+                            id="produto-estoque" 
+                            placeholder="0"
+                            min="0"
+                            aria-label="Quantidade em estoque"
+                        >
+                    </div>
+
+                    <!-- Campo Imagem do Produto -->
+                    <div class="form-group">
+                        <label for="produto-imagem">URL ou Nome da Imagem</label>
+                        <input 
+                            type="text" 
+                            id="produto-imagem" 
+                            placeholder="URL ou nome da imagem"
+                            aria-label="URL ou nome da imagem do produto"
+                        >
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="form-buttons">
+                        <button type="submit" id="btn-salvar-produto" aria-label="Salvar produto">Salvar Produto</button>
+                        <button type="button" id="btn-cancelar-edicao" style="display:none;" aria-label="Cancelar edição">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- SEÇÃO 2: LISTA DE PRODUTOS CADASTRADOS -->
+            <section id="secao-lista-produtos" class="admin-secao">
+                <h2>Produtos Cadastrados</h2>
+                
+                <div id="lista-produtos">
+                    <!-- Os produtos serão carregados dinamicamente aqui -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-column">
+                <div>
+                    <h4>Redes sociais</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>E-mail: <a href="mailto:email@exemplo.com">email@exemplo.com</a></li>
+                        <li>WhatsApp: <a href="#">(xx) x xxxx-xxxx</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright"> &copy; 2026 Materiais Pedagógicos - Todos os direitos reservados</p>
+        </footer>
+
+        <script src="../script.js"></script>
+        <script src="admin.js"></script>
+    </body>
+</html>
