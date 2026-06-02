@@ -51,7 +51,7 @@ function fecharCarrinho() {
 
 // ESCUTANDO CLIQUES PARA ABRIR O CARRINHO
 // Quando clica no botão de carrinho, abre o side drawer
-if (abrirCarrinhoBtn) {
+if (abrirCarrinhoBtn) { 
     abrirCarrinhoBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Evita comportamento padrão do link
         abrirCarrinho();
