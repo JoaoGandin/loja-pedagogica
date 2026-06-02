@@ -33,18 +33,18 @@ const fecharCarrinhoBtn = document.getElementById('fechar-carrinho');
 
 // FUNÇÃO AUXILIAR: Abrir Carrinho
 // Adiciona a classe 'ativo' ao carrinho e ao overlay para que apareçam na tela
+
 function abrirCarrinho() {
-    carrinhoLateral.classList.add('ativo');
-    overlayCarrinho.classList.add('ativo');
+    if (carrinhoLateral) carrinhoLateral.classList.add('ativo');
+    if (overlayCarrinho) overlayCarrinho.classList.add('ativo');
     // Previne que o scroll da página rol enquanto o carrinho está aberto
     document.body.style.overflow = 'hidden';
 }
-
 // FUNÇÃO AUXILIAR: Fechar Carrinho
 // Remove a classe 'ativo' do carrinho e do overlay para ocultá-los
 function fecharCarrinho() {
-    carrinhoLateral.classList.remove('ativo');
-    overlayCarrinho.classList.remove('ativo');
+    if (carrinhoLateral) carrinhoLateral.classList.remove('ativo');
+    if (overlayCarrinho) overlayCarrinho.classList.remove('ativo');
     // Permite scroll novamente
     document.body.style.overflow = 'auto';
 }
