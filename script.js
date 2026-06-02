@@ -51,22 +51,28 @@ function fecharCarrinho() {
 
 // ESCUTANDO CLIQUES PARA ABRIR O CARRINHO
 // Quando clica no botão de carrinho, abre o side drawer
-abrirCarrinhoBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Evita comportamento padrão do link
-    abrirCarrinho();
-});
+if (abrirCarrinhoBtn) {
+    abrirCarrinhoBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita comportamento padrão do link
+        abrirCarrinho();
+    });
+}
 
 // ESCUTANDO CLIQUE NO BOTÃO FECHAR
 // Quando clica no botão 'X', fecha o carrinho
-fecharCarrinhoBtn.addEventListener('click', () => {
-    fecharCarrinho();
-});
+if (fecharCarrinhoBtn) {
+    fecharCarrinhoBtn.addEventListener('click', () => {
+        fecharCarrinho();
+    });
+}
 
 // ESCUTANDO CLIQUE NO OVERLAY
 // Quando clica na área escura (fundo), também fecha o carrinho
-overlayCarrinho.addEventListener('click', () => {
-    fecharCarrinho();
-});
+if (overlayCarrinho) {
+    overlayCarrinho.addEventListener('click', () => {
+        fecharCarrinho();
+    });
+}
 
 /* ========================================= */
 /* SISTEMA DE ADICIONAR PRODUTOS AO CARRINHO */
